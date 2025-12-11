@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swim Baby Size Chart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* ========================================
+           COLOR VARIABLES
+           ======================================== */
+        :root {
+            --color-bg: #F5F5F0;
+            --color-text: rgb(94, 87, 83);
+            --color-accent: #5A5A5A;
+            --color-border: #E0E0E0;
+            --color-card-bg: #FFFFFF;
+            --color-hover-bg: #FAFAF8;
+        }
+
+        /* ========================================
+           BASE STYLES
+           ======================================== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+            color: var(--color-text);
+            background: var(--color-bg);
+            min-height: 100vh;
+            padding: 20px 12px;
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+
+        h1 {
+            font-family: 'Nunito', sans-serif;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 32px;
+            color: var(--color-text);
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        /* ========================================
+           TABLE CONTAINER
+           ======================================== */
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .size-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+
+        /* ========================================
+           STICKY HEADER ROW
+           ======================================== */
+        .table-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            background: var(--color-card-bg);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .table-header th {
+            padding: 16px 8px;
+            font-weight: 600;
+            font-size: 14px;
+            color: var(--color-accent);
+            text-align: center;
+            border-bottom: 2px solid var(--color-border);
+        }
+
+        /* First three columns: normal text */
+        .table-header th:nth-child(1),
+        .table-header th:nth-child(2),
+        .table-header th:nth-child(3) {
+            vertical-align: middle;
+        }
+
+        /* Measurement columns: angled text */
+        .table-header th:nth-child(n+4) {
+            height: 80px;
+            position: relative;
+            padding: 0;
+            vertical-align: bottom;
+        }
+
+        .angled-header {
+            position: absolute;
+            bottom: 8px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-45deg);
+            transform-origin: center center;
+            white-space: nowrap;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--color-accent);
+        }
+
+        /* ========================================
+           DATA ROWS (CARD STYLE)
+           ======================================== */
+        .size-row {
+            background: var(--color-card-bg);
+            transition: all 0.3s ease;
+        }
+
+        .size-row:hover {
+            background: var(--color-hover-bg);
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        .size-row td {
+            padding: 16px 8px;
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+            font-size: 15px;
+        }
+
+        /* Size column */
+        .size-row td:nth-child(1) {
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+
+        /* Icon column */
+        .size-row td:nth-child(2) {
+            font-size: 28px;
+            line-height: 1;
+        }
+
+        /* Age column */
+        .size-row td:nth-child(3) {
+            font-size: 13px;
+            color: #666;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        /* Measurement columns */
+        .size-row td:nth-child(n+4) {
+            font-weight: bold;
+            color: var(--color-accent);
+        }
+
+        .measurement-unit {
+            font-size: 11px;
+            color: #999;
+            margin-left: 2px;
+            font-weight: normal;
+        }
+
+        /* ========================================
+           SPACING BETWEEN ROWS
+           ======================================== */
+        .size-row + .size-row {
+            border-top: 8px solid var(--color-bg);
+        }
+
+        /* ========================================
+           RESPONSIVE DESIGN
+           ======================================== */
+        @media (min-width: 480px) {
+            body {
+                padding: 32px 20px;
+            }
+
+            h1 {
+                font-size: 28px;
+                line-height: 36px;
+                margin-bottom: 24px;
+            }
+
+            .container {
+                max-width: 600px;
+            }
+
+            .table-header th {
+                font-size: 15px;
+            }
+
+            .angled-header {
+                font-size: 14px;
+            }
+
+            .size-row td {
+                padding: 18px 10px;
+                font-size: 16px;
+            }
+
+            .size-row td:nth-child(1) {
+                font-size: 24px;
+            }
+
+            .size-row td:nth-child(2) {
+                font-size: 32px;
+            }
+
+            .size-row td:nth-child(3) {
+                font-size: 14px;
+            }
+        }
+
+        @media (min-width: 768px) {
+            body {
+                padding: 40px 20px;
+            }
+
+            .container {
+                max-width: 700px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Swim Baby Size Chart</h1>
+        
+        <div class="table-wrapper">
+            <table class="size-table">
+                <!-- ========================================
+                     STICKY HEADER ROW
+                     ======================================== -->
+                <thead class="table-header">
+                    <tr>
+                        <th>Size</th>
+                        <th>Icon</th>
+                        <th>Age</th>
+                        <th><span class="angled-header">Chest</span></th>
+                        <th><span class="angled-header">Waist</span></th>
+                        <th><span class="angled-header">Hip</span></th>
+                        <th><span class="angled-header">Height</span></th>
+                    </tr>
+                </thead>
+                
+                <!-- ========================================
+                     DATA ROWS
+                     ======================================== -->
+                <tbody>
+                    <!-- Size 000 -->
+                    <tr class="size-row">
+                        <td>000</td>
+                        <td>👶</td>
+                        <td>Newborn-3mo</td>
+                        <td>42<span class="measurement-unit">cm</span></td>
+                        <td>40-46<span class="measurement-unit">cm</span></td>
+                        <td>46<span class="measurement-unit">cm</span></td>
+                        <td>62<span class="measurement-unit">cm</span></td>
+                    </tr>
+                    
+                    <!-- Size 00 -->
+                    <tr class="size-row">
+                        <td>00</td>
+                        <td>🍼</td>
+                        <td>3-6mo</td>
+                        <td>44<span class="measurement-unit">cm</span></td>
+                        <td>40-46<span class="measurement-unit">cm</span></td>
+                        <td>48<span class="measurement-unit">cm</span></td>
+                        <td>68<span class="measurement-unit">cm</span></td>
+                    </tr>
+                    
+                    <!-- Size 0 -->
+                    <tr class="size-row">
+                        <td>0</td>
+                        <td>👨‍🍼</td>
+                        <td>6-12mo</td>
+                        <td>46<span class="measurement-unit">cm</span></td>
+                        <td>42-48<span class="measurement-unit">cm</span></td>
+                        <td>50<span class="measurement-unit">cm</span></td>
+                        <td>76<span class="measurement-unit">cm</span></td>
+                    </tr>
+                    
+                    <!-- Size 1 -->
+                    <tr class="size-row">
+                        <td>1</td>
+                        <td>👧</td>
+                        <td>1 year</td>
+                        <td>48<span class="measurement-unit">cm</span></td>
+                        <td>44-50<span class="measurement-unit">cm</span></td>
+                        <td>54<span class="measurement-unit">cm</span></td>
+                        <td>84<span class="measurement-unit">cm</span></td>
+                    </tr>
+                    
+                    <!-- Size 2 -->
+                    <tr class="size-row">
+                        <td>2</td>
+                        <td>🧒</td>
+                        <td>2 years</td>
+                        <td>50<span class="measurement-unit">cm</span></td>
+                        <td>46-52<span class="measurement-unit">cm</span></td>
+                        <td>56<span class="measurement-unit">cm</span></td>
+                        <td>92<span class="measurement-unit">cm</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
